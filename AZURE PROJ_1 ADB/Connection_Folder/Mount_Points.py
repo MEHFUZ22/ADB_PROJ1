@@ -81,14 +81,14 @@ else:
 # MAGIC %py
 # MAGIC configs = {"fs.azure.account.auth.type": "OAuth",
 # MAGIC           "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
-# MAGIC           "fs.azure.account.oauth2.client.id": dbutils.secrets.get(scope = "azure-proj", key = "data-app-id"),
-# MAGIC           "fs.azure.account.oauth2.client.secret": dbutils.secrets.get(scope="azure-proj",key="data-app-secrect"),
+# MAGIC           "fs.azure.account.oauth2.client.id": dbutils.secrets.get(scope = "azure-proj", key = "spn-app-id"),
+# MAGIC           "fs.azure.account.oauth2.client.secret": dbutils.secrets.get(scope="azure-proj",key="spn-client-secret"),
 # MAGIC           "fs.azure.account.oauth2.client.endpoint": dbutils.secrets.get(scope = "azure-proj", key = "data-client-refresh-url")}
 # MAGIC
 # MAGIC #Optionally, you can add <directory-name> to the source URI of your mount point.
 # MAGIC mountPoint="/mnt/mart_datalake/"
 # MAGIC if not any(mount.mountPoint == mountPoint for mount in dbutils.fs.mounts()):
 # MAGIC   dbutils.fs.mount(
-# MAGIC     source = dbutils.secrets.get(scope = "azure-proj", key = "datalake-mart"),
+# MAGIC     source ="abfss://mart@{}.dfs.core.windows.net/".format(dbutils.secrets.get(scope="azure-proj", key="datalake-mart")),
 # MAGIC     mount_point = mountPoint,
 # MAGIC     extra_configs = configs)
