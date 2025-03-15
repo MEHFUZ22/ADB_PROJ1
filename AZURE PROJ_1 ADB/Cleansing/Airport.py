@@ -1,6 +1,6 @@
 # Databricks notebook source
 # MAGIC
-# MAGIC %run "/Workspace/AZURE PROJ_1 ADB/Utilities/Utilities"
+# MAGIC %run "/Workspace/CODES/ADB_PROJ ONE/AZURE PROJ_1 ADB/Utilities/Utilities"
 
 # COMMAND ----------
 
